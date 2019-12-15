@@ -1,9 +1,10 @@
 const express = require('express');
 
+const PORT = process.env.PORT || 6969;
 var app = express();
 
-app.get('/api', (req, res) => {
-    res.send('Hello Mother fucker');
-})
+const todoRoutes = require('./routes/todo');
 
-app.listen(6969);
+app.use('/todo', todoRoutes);
+
+app.listen(PORT, () => console.log(`Server started at ${PORT}`));
